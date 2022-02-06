@@ -46,7 +46,7 @@ class Solution2805
 		//System.setIn(new FileInputStream("res/input.txt"));
 
 		/*
-		   표준입력 System.in 으로부터 스캐너를 만들어 데이터를 읽어옵니다.
+		   표준입력 System.in 으로부터 스캐너를 만들어 데이터를 읽어옵니다. 
 		 */
 		Scanner sc = new Scanner(System.in);
 		int T;
