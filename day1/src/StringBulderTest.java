@@ -15,8 +15,9 @@ public class StringBulderTest {
 		sb.append(3);
 		s = sb.toString();// 이렇게 만드는게 좋음!!
 		
-		
-		
+		//반복문일 경우 StringBuilder sb = new StringBuilder();
+		//sp.append()로 사용!
+		//+=사용하면 메모리 누수!	
 		
 		String k = "k";
 		k = k + "j";
