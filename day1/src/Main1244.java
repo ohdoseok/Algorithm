@@ -1,4 +1,4 @@
-//백준 1244
+//백준 1244 
 import java.util.Scanner;
 
 public class Main1244 {
