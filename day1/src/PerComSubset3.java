@@ -2,33 +2,37 @@
 import java.util.Scanner;
 
 public class PerComSubset3 {
-		static int N;
-		static boolean[] bo;
-		static int[] arrN;
+	static int N;
+	static int[] arrN;
+	static boolean[] check;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		N = sc.nextInt();//N개 받는다
+		N = sc.nextInt();
 		arrN = new int[N];
-		bo = new boolean[N];
+		check = new boolean[N];
 		for (int i = 0; i < N; i++) {
-			arrN[i] = sc.nextInt();//N개의 숫자를 각각 입력받고 배열에 추가
+			arrN[i] = sc.nextInt();
 		}
 		go(0);
 	}
 	static void go(int cnt) {
 		if (cnt == N) {
-			for (int i = 0; i < N; i++) {
-				if (bo[i]) {
+			for (int i = 0; i < check.length; i++) {
+				if (check[i]) {
 					System.out.printf("%d ",arrN[i]);
+				}else {
+					System.out.printf("X ");
 				}
 			}
 			System.out.println();
 			return;
 		}
 		
-		bo[cnt]=true;
+		check[cnt] = true;
 		go(cnt+1);
-		bo[cnt]=false;
+		check[cnt] = false;
 		go(cnt+1);
+
+
 	}
 }
