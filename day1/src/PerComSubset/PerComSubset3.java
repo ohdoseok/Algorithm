@@ -1,3 +1,4 @@
+package PerComSubset;
 //부분집합
 import java.util.Scanner;
 
