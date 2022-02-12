@@ -1,1 +1,1 @@
-# Agorightm
+SWEA, BOJ, Algo theory
