@@ -2,7 +2,7 @@ package PerComSubset;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class CombinationTest {//조합
+public class CombinationTest {//조합 
 	static int N,R;
 	static int[] input, numbers;//input : 입력수배열, numbers : 선택수배열
 	public static void main(String[] args) {
