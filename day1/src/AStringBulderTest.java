@@ -1,5 +1,5 @@
 
-public class StringBulderTest {
+public class AStringBulderTest {
 	public static void main(String[] args) {
 		String s = "s";
 		
