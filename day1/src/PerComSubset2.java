@@ -6,32 +6,41 @@ import java.util.Scanner;
 
 public class PerComSubset2 {
 		static int N;
-		static int R;
+		static int M;
 		static int[] arrN;
-		static int[] arrR;
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		 N = sc.nextInt();
-		 R = sc.nextInt();
-		arrN = new int[N];
-		arrR = new int[R];
-		for (int i = 0; i < N; i++) {
-			arrN[i] = sc.nextInt();
+		static int[] arrM;
+		public static void main(String[] args) {
+			Scanner sc = new Scanner(System.in);
+			N = sc.nextInt();
+			M = sc.nextInt();
+			arrN = new int[N];
+			arrM = new int[M];
+			for (int i = 0; i < N; i++) {
+				arrN[i] = sc.nextInt();
+			}
+//			go(0,0);
+			go2(0,0);
 		}
-		go(0,0);
-		
-	}
-	
-	static void go(int cnt, int start) {
-		if (cnt == R) {
-			System.out.println(Arrays.toString(arrR));
-			return;
+//		static void go(int cnt, int start) {
+//			if (cnt==M) {
+//				System.out.println(Arrays.toString(arrM));
+//				return;
+//			}
+//			for (int i = start; i < N; i++) {
+//				
+//				arrM[cnt] = arrN[i];
+//				go(cnt+1,i+1);
+//			}
+//			
+//		}
+		static void go2(int cnt, int start) {//중복조합
+			if (cnt == M) {
+				System.out.println(Arrays.toString(arrM));
+				return;
+			}
+			for (int i = start; i < N; i++) {
+				arrM[cnt] = arrN[i];
+				go2(cnt+1,i);
+			}
 		}
-		
-		for (int i = start; i < N; i++) {
-			arrR[cnt]=arrN[i];
-			go(cnt+1,i+1);
-			
-		}
-	}
 }
