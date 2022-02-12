@@ -1,3 +1,4 @@
+package PerComSubset;
 import java.util.Scanner;
 
 public class PowerSetTest {
