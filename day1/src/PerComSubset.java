@@ -4,46 +4,58 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class PerComSubset {
-		static int N;
-		static int R;
-		static int[] arrN;
-		static int[] arrR;
-		static boolean[] arrB;
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		N = Integer.parseInt(br.readLine());
-		R = Integer.parseInt(br.readLine());
-		arrN = new int[N];
-		arrR = new int[R];
-		arrB = new boolean[N];
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		for (int i = 0; i <N; i++) {
-			arrN[i] = Integer.parseInt(st.nextToken());
+public class PerComSubset {//순열
+	static int N;
+	static int M;
+	static int[] arrN;
+	static int[] arrM;
+	static boolean[] check;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		N = sc.nextInt();//N개중에
+		M = sc.nextInt();//M개
+		arrN = new int [N];
+		arrM = new int [M];
+		check = new boolean[N];
+		for (int i = 0; i < N; i++) {
+			arrN[i] = sc.nextInt();
 		}
-		go(0);
+		
+//		go(0);
+		go2(0);
+		
 		
 	}
-	static void go(int cnt) {
-		if (cnt == R) {
-			for (int i = 0; i < arrB.length; i++) {
-				if (arrB[i]) {
-					System.out.printf("%d ",arrN[i]);
-				}
-			}
-			System.out.println();
+	static void go(int cnt) {//중복조합
+		if (cnt==M) {
+			System.out.println(Arrays.toString(arrM));
 			return;
 		}
-		for (int i = 0; i < N; i++) {//매번 자리수마다 n개만큼 반복해줘서 하나 뽑는데 하나 뽑은게 그전에 뽑은거면 안된다.
-			if (arrB[i]) {
+		for (int i = 0; i < N; i++) {
+			if (check[i]) {
 				continue;
 			}
-			
-			arrB[i] = true;
+			arrM[cnt] = arrN[i];
+			check[i] = true;
 			go(cnt+1);
-			arrB[i] = false;
+			check[i] = false;
+			
 		}
+		
+	}
+	static void go2(int cnt) {//중복순열
+		if (cnt==M) {
+			System.out.println(Arrays.toString(arrM));
+			return;
+		}
+		for (int i = 0; i < N; i++) {
+			arrM[cnt] = arrN[i];
+			go(cnt+1);
+		}
+		
 	}
 }
