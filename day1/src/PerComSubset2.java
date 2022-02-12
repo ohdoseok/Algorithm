@@ -18,21 +18,21 @@ public class PerComSubset2 {
 			for (int i = 0; i < N; i++) {
 				arrN[i] = sc.nextInt();
 			}
-//			go(0,0);
+			go(0,0);
 			go2(0,0);
 		}
-//		static void go(int cnt, int start) {
-//			if (cnt==M) {
-//				System.out.println(Arrays.toString(arrM));
-//				return;
-//			}
-//			for (int i = start; i < N; i++) {
-//				
-//				arrM[cnt] = arrN[i];
-//				go(cnt+1,i+1);
-//			}
-//			
-//		}
+		static void go(int cnt, int start) {
+			if (cnt==M) {
+				System.out.println(Arrays.toString(arrM));
+				return;
+			}
+			for (int i = start; i < N; i++) {
+				
+				arrM[cnt] = arrN[i];
+				go(cnt+1,i+1);
+			}
+			
+		}
 		static void go2(int cnt, int start) {//중복조합
 			if (cnt == M) {
 				System.out.println(Arrays.toString(arrM));
