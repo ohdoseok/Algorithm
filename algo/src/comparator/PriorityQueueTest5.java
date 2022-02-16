@@ -12,8 +12,11 @@ public class PriorityQueueTest5 {
 		pq.offer(new Data(7,80));
 		pq.offer(new Data(4,80));
 		pq.offer(new Data(9,90));
+		pq.offer(new Data(3,60));
 		pq.offer(new Data(1,80));
 		
+		
+		System.out.println(pq.poll());
 		System.out.println(pq.poll());
 		System.out.println(pq.poll());
 		System.out.println(pq.poll());
