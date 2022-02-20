@@ -3,7 +3,7 @@ package day2;
 import java.util.Arrays;
 import java.util.Scanner;
 
-//순열을 미트마스킹으로
+//순열을 미트마스킹으로  비트마스킹후에 int값이 나오기 때문에 0이 아니라면 continue
 public class BitMaskingTest {
 	static int R;
 	static int[] arrN;
