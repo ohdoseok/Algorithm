@@ -40,6 +40,9 @@ public class Solution3289 {
 					}
 				}
 			}
+			for (int i = 1; i < N+1; i++) {
+				findSet(i);
+			}
 			System.out.printf("#%d %s%n",testcase,sb);
 		}
 	}
