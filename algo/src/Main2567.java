@@ -7,69 +7,47 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 import java.util.StringTokenizer;
-
+//다시
 public class Main2567 {
-	static class Vertex implements Comparable<Vertex>{
-		int end;
-		int weight;
-
-		public Vertex(int end, int weight) {
-			this.end = end;
-			this.weight = weight;
-		}
-
-		@Override
-		public int compareTo(Vertex o) {
-			return Integer.compare(this.weight, o.weight);
-		}
-
-	}
-	public static void main(String[] args) throws IOException {
+	static int res = 0;
+	static int[] dx = {-1,1,0,0,-1,-1,1,1};//상,하,좌,우 순서
+	static int[] dy = {0,0,-1,1,-1,1,1,-1};
+	static int[][] map = new int[102][102];
+	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = null;
-		st = new StringTokenizer(br.readLine());
-		int V = Integer.parseInt(st.nextToken());//정점의 개수
-		int E = Integer.parseInt(st.nextToken());//간선의 개수
-		int start = Integer.parseInt(br.readLine());
-		int[] arr = new int[V+1];
-		ArrayList<Vertex>[] list = new ArrayList[V+1];
-		for (int i = 1; i < V+1; i++) {
-			list[i] = new ArrayList<>();
+		int T = Integer.parseInt(br.readLine());
+		for (int i = 0; i < T; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			int x = Integer.parseInt(st.nextToken());
+			int y = Integer.parseInt(st.nextToken());
+			go(y,x);
 		}
-		boolean[] visit = new boolean[V+1];
-
-		for (int i = 0; i <E; i++) {
-			st = new StringTokenizer(br.readLine());
-			list[Integer.parseInt(st.nextToken())].add(new Vertex(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken())));
+		for (int i = 0; i < 102; i++) {
+			for (int j = 0; j < 102; j++) {
+				search(i,j);
+			}
 		}
-
-		PriorityQueue<Vertex> q = new PriorityQueue<>();
-		Arrays.fill(arr, Integer.MAX_VALUE);
-		arr[start] = 0;
-		q.offer(new Vertex(start, arr[start]));
-		int cnt = 0;
-		while(!q.isEmpty()) {
-			Vertex ver = q.poll();
-			int cur = ver.end;
-
-			if (visit[cur]) {
+		System.out.println(res);
+		
+	}
+	static void go(int x, int y) {
+		for (int i = 1; i < 11; i++) {
+			for (int j = 1; j < 11; j++) {
+				map[x+i][y+j] = 1; 
+			}
+		}
+	}
+	static void search(int x, int y) {
+		if (map[x][y]!=1) {
+			return;
+		}
+		for (int i = 0; i < 4; i++) {
+			if (x+dx[i]<0||x+dx[i]>=102||y+dy[i]<0||y+dy[i]>=102) {
 				continue;
 			}
-			for (Vertex v : list[cur]) {
-				if (arr[v.end]>arr[cur]+v.weight) {
-					arr[v.end] = arr[cur] + v.weight;
-					q.add(new Vertex(v.end, arr[v.end]));
-				}
+			if (map[x+dx[i]][y+dy[i]]==0) {
+				res++;
 			}
-		}
-
-
-		for (int i = 1; i < arr.length; i++) {
-			if (arr[i]==Integer.MAX_VALUE) {
-				System.out.println("INF");
-				continue;
-			}
-			System.out.println(arr[i]);
 		}
 	}
 }
