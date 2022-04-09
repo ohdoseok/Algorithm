@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Iterator;
 import java.util.StringTokenizer;
 
 public class Main14889 {//시간초과
@@ -29,12 +30,12 @@ public class Main14889 {//시간초과
 			for (int j = 0; j < N; j++) {
 				map[i][j] = Integer.parseInt(st.nextToken());
 			}
-			
+
 		}
-		per(0);
+		per(0,1);
 		System.out.println(res);
 	}
-	static void per(int cnt) {
+	static void per(int cnt, int start) {
 		if (cnt == half) {
 			int A = 0;
 			int B = 0;
@@ -46,7 +47,7 @@ public class Main14889 {//시간초과
 					j++;
 				}
 			}
-			
+
 			sum = 0;
 			pertwo(0,arr);
 			A = sum;
@@ -57,20 +58,20 @@ public class Main14889 {//시간초과
 				res = Math.abs(A-B);
 			}
 			return;
-			
+
 		}
-		for (int i = 1; i < N+1; i++) {
+		for (int i = start; i < N+1; i++) {
 			if (visit[i]) {
 				continue;
 			}
 			arr[cnt] = i;
 			visit[i] = true;
-			per(cnt+1);
+			per(cnt+1,i+1);
 			visit[i] = false;
 		}
-		
-		
-		
+
+
+
 	}
 	static void pertwo(int cnt,int[] arr) {
 		if (cnt==2) {
@@ -86,8 +87,8 @@ public class Main14889 {//시간초과
 			pertwo(cnt+1,arr);
 			visittwo[i] = false;
 		}
-		
+
 	}
-	
-	
+
+
 }
