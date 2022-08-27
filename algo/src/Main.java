@@ -33,7 +33,9 @@ public class Main {
 			CExit[0] = Integer.parseInt(arr[0])-1;//입구 위치 0부터라서 1뺐
 			CExit[1] = Integer.parseInt(arr[1]);//낚시꾼
 
+			dfs(0,0);
 			
+			System.out.println("#"+N+" "+sum);
 
 
 
@@ -81,111 +83,110 @@ public class Main {
 	public static void dfs(int result, int num) {
 		if (num == 3) {
 			if(result < sum)
-			sum = result;
+				sum = result;
 		}
 		for (int i = num; i < 3; i++) {
-			if (!visitExit[i]) {
-				if (i==0) {
-					int lV = left(AExit[0], AExit[1], 0, 0);
-					boolean[] checkVisit2 = checkVisit.clone();
-					for (int j = 0; j < checkVisit2.length; j++) {
-						checkVisit[j] = false;
-					}
-					result += lV;
-					dfs(result, num+1);
-					for (int j = 0; j < checkVisit2.length; j++) {
-						if (checkVisit2[j]) {
-							numFishing[j] = false;
-						}
-					}
-					
-					result -= lV;
-					
-					//왼쪽갔다왔음 
-					
-					
-					int rV = right(AExit[0], AExit[1], 0, 0);
-					checkVisit2 = checkVisit.clone();
-					for (int j = 0; j < checkVisit2.length; j++) {
-						checkVisit[j] = false;
-					}
-					result += rV;
-					dfs(result, num+1);
-					for (int j = 0; j < checkVisit2.length; j++) {
-						if (checkVisit2[j]) {
-							numFishing[j] = false;
-						}
-					}
-					result -= rV;
-				}else if(i==1) {
-					int lV = left(BExit[0], BExit[1], 0, 0);
-					boolean[] checkVisit2 = checkVisit.clone();
-					for (int j = 0; j < checkVisit2.length; j++) {
-						checkVisit[j] = false;
-					}
-					result += lV;
-					dfs(result, num+1);
-					for (int j = 0; j < checkVisit2.length; j++) {
-						if (checkVisit2[j]) {
-							numFishing[j] = false;
-						}
-					}
-					
-					result -= lV;
-					
-					//왼쪽갔다왔음 
-					
-					
-					int rV = right(BExit[0], BExit[1], 0, 0);
-					checkVisit2 = checkVisit.clone();
-					for (int j = 0; j < checkVisit2.length; j++) {
-						checkVisit[j] = false;
-					}
-					result += rV;
-					dfs(result, num+1);
-					for (int j = 0; j < checkVisit2.length; j++) {
-						if (checkVisit2[j]) {
-							numFishing[j] = false;
-						}
-					}
-					result -= rV;
-					
-				}else if(i==2) {
-					int lV = left(CExit[0], CExit[1], 0, 0);
-					boolean[] checkVisit2 = checkVisit.clone();
-					for (int j = 0; j < checkVisit2.length; j++) {
-						checkVisit[j] = false;
-					}
-					result += lV;
-					dfs(result, num+1);
-					for (int j = 0; j < checkVisit2.length; j++) {
-						if (checkVisit2[j]) {
-							numFishing[j] = false;
-						}
-					}
-					
-					result -= lV;
-					
-					//왼쪽갔다왔음 
-					
-					
-					int rV = right(CExit[0], CExit[1], 0, 0);
-					checkVisit2 = checkVisit.clone();
-					for (int j = 0; j < checkVisit2.length; j++) {
-						checkVisit[j] = false;
-					}
-					result += rV;
-					dfs(result, num+1);
-					for (int j = 0; j < checkVisit2.length; j++) {
-						if (checkVisit2[j]) {
-							numFishing[j] = false;
-						}
-					}
-					result -= rV;
+			if (i==0) {
+				int lV = left(AExit[0], AExit[1], 0, 0);
+				boolean[] checkVisit2 = checkVisit.clone();
+				for (int j = 0; j < checkVisit2.length; j++) {
+					checkVisit[j] = false;
 				}
+				result += lV;
+				dfs(result, num+1);
+				for (int j = 0; j < checkVisit2.length; j++) {
+					if (checkVisit2[j]) {
+						numFishing[j] = false;
+					}
+				}
+
+				result -= lV;
+
+				//왼쪽갔다왔음 
+
+
+				int rV = right(AExit[0], AExit[1], 0, 0);
+				checkVisit2 = checkVisit.clone();
+				for (int j = 0; j < checkVisit2.length; j++) {
+					checkVisit[j] = false;
+				}
+				result += rV;
+				dfs(result, num+1);
+				for (int j = 0; j < checkVisit2.length; j++) {
+					if (checkVisit2[j]) {
+						numFishing[j] = false;
+					}
+				}
+				result -= rV;
+			}else if(i==1) {
+				int lV = left(BExit[0], BExit[1], 0, 0);
+				boolean[] checkVisit2 = checkVisit.clone();
+				for (int j = 0; j < checkVisit2.length; j++) {
+					checkVisit[j] = false;
+				}
+				result += lV;
+				dfs(result, num+1);
+				for (int j = 0; j < checkVisit2.length; j++) {
+					if (checkVisit2[j]) {
+						numFishing[j] = false;
+					}
+				}
+
+				result -= lV;
+
+				//왼쪽갔다왔음 
+
+
+				int rV = right(BExit[0], BExit[1], 0, 0);
+				checkVisit2 = checkVisit.clone();
+				for (int j = 0; j < checkVisit2.length; j++) {
+					checkVisit[j] = false;
+				}
+				result += rV;
+				dfs(result, num+1);
+				for (int j = 0; j < checkVisit2.length; j++) {
+					if (checkVisit2[j]) {
+						numFishing[j] = false;
+					}
+				}
+				result -= rV;
+
+			}else if(i==2) {
+				int lV = left(CExit[0], CExit[1], 0, 0);
+				boolean[] checkVisit2 = checkVisit.clone();
+				for (int j = 0; j < checkVisit2.length; j++) {
+					checkVisit[j] = false;
+				}
+				result += lV;
+				dfs(result, num+1);
+				for (int j = 0; j < checkVisit2.length; j++) {
+					if (checkVisit2[j]) {
+						numFishing[j] = false;
+					}
+				}
+
+				result -= lV;
+
+				//왼쪽갔다왔음 
+
+
+				int rV = right(CExit[0], CExit[1], 0, 0);
+				checkVisit2 = checkVisit.clone();
+				for (int j = 0; j < checkVisit2.length; j++) {
+					checkVisit[j] = false;
+				}
+				result += rV;
+				dfs(result, num+1);
+				for (int j = 0; j < checkVisit2.length; j++) {
+					if (checkVisit2[j]) {
+						numFishing[j] = false;
+					}
+				}
+				result -= rV;
 			}
+
 		}
 	}
-	
+
 
 }
