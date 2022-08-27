@@ -89,7 +89,7 @@ public class Main {
 			if (i==0) {
 				int lV = left(AExit[0], AExit[1], 0, 0);
 				boolean[] checkVisit2 = checkVisit.clone();
-				for (int j = 0; j < checkVisit2.length; j++) {
+				for (int j = 0; j < checkVisit.length; j++) {
 					checkVisit[j] = false;
 				}
 				result += lV;
@@ -107,7 +107,7 @@ public class Main {
 
 				int rV = right(AExit[0], AExit[1], 0, 0);
 				checkVisit2 = checkVisit.clone();
-				for (int j = 0; j < checkVisit2.length; j++) {
+				for (int j = 0; j < checkVisit.length; j++) {
 					checkVisit[j] = false;
 				}
 				result += rV;
@@ -121,7 +121,7 @@ public class Main {
 			}else if(i==1) {
 				int lV = left(BExit[0], BExit[1], 0, 0);
 				boolean[] checkVisit2 = checkVisit.clone();
-				for (int j = 0; j < checkVisit2.length; j++) {
+				for (int j = 0; j < checkVisit.length; j++) {
 					checkVisit[j] = false;
 				}
 				result += lV;
