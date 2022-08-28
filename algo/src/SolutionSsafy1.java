@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
+public class SolutionSsafy1 {
 	public static boolean[] numFishing;
 	public static boolean[] visitExit;
 	public static int sum;
@@ -10,6 +10,7 @@ public class Main {
 	public static int[] BExit;
 	public static int[] CExit;
 	public static boolean[] checkVisit;
+	public static int tempres;
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int testcase = Integer.parseInt(br.readLine());
@@ -34,7 +35,6 @@ public class Main {
 			CExit[1] = Integer.parseInt(arr[1]);//낚시꾼
 
 			dfs(0,0);
-			
 			System.out.println("#"+N+" "+sum);
 
 
@@ -49,16 +49,14 @@ public class Main {
 			if(exit-i>=0 && !numFishing[exit-i]) {
 				numFishing[exit-i] = true;
 				checkVisit[exit-i] = true;
-				left(exit, person-1, i, res+i+1);
-				break;
+				return(left(exit, person-1, i, res+i+1));
 			}else if(exit+i<numFishing.length && !numFishing[exit+i]) {
 				numFishing[exit+i] = true;
 				checkVisit[exit+i] = true;
-				left(exit, person-1, i, res+i+1);
-				break;
+				return(left(exit, person-1, i, res+i+1));
 			}
 		}
-		return res;
+		return 0;
 
 	}
 	public static int right(int exit, int person, int dis, int res) {//오른쪽 우선 정렬
@@ -69,31 +67,32 @@ public class Main {
 			if(exit+i<numFishing.length && !numFishing[exit+i]) {
 				numFishing[exit+i] = true;
 				checkVisit[exit+i] = true;
-				left(exit, person-1, i, res+i+1);
-				break;
+				return(right(exit, person-1, i, res+i+1));
+				
 			}else if(exit-i>=0 && !numFishing[exit-i]) {
 				numFishing[exit-i] = true;
 				checkVisit[exit-i] = true;
-				left(exit, person-1, i, res+i+1);
-				break;
+				return(right(exit, person-1, i, res+i+1));
 			}
 		}
-		return res;
+		return 0;
 	}
 	public static void dfs(int result, int num) {
 		if (num == 3) {
-			if(result < sum)
+			if(sum > result)
 				sum = result;
 		}
-		for (int i = num; i < 3; i++) {
-			if (i==0) {
+		for (int i = 0; i < 3; i++) {
+			if (i==0 && !visitExit[0]) {
 				int lV = left(AExit[0], AExit[1], 0, 0);
 				boolean[] checkVisit2 = checkVisit.clone();
 				for (int j = 0; j < checkVisit.length; j++) {
 					checkVisit[j] = false;
 				}
 				result += lV;
+				visitExit[0] = true;
 				dfs(result, num+1);
+				visitExit[0] = false;
 				for (int j = 0; j < checkVisit2.length; j++) {
 					if (checkVisit2[j]) {
 						numFishing[j] = false;
@@ -111,21 +110,25 @@ public class Main {
 					checkVisit[j] = false;
 				}
 				result += rV;
+				visitExit[0] = true;
 				dfs(result, num+1);
+				visitExit[0] = false;
 				for (int j = 0; j < checkVisit2.length; j++) {
 					if (checkVisit2[j]) {
 						numFishing[j] = false;
 					}
 				}
 				result -= rV;
-			}else if(i==1) {
+			}else if(i==1 && !visitExit[1]) {
 				int lV = left(BExit[0], BExit[1], 0, 0);
 				boolean[] checkVisit2 = checkVisit.clone();
 				for (int j = 0; j < checkVisit.length; j++) {
 					checkVisit[j] = false;
 				}
 				result += lV;
+				visitExit[1]=true;
 				dfs(result, num+1);
+				visitExit[1]=false;
 				for (int j = 0; j < checkVisit2.length; j++) {
 					if (checkVisit2[j]) {
 						numFishing[j] = false;
@@ -143,7 +146,9 @@ public class Main {
 					checkVisit[j] = false;
 				}
 				result += rV;
+				visitExit[1]=true;
 				dfs(result, num+1);
+				visitExit[1]=false;
 				for (int j = 0; j < checkVisit2.length; j++) {
 					if (checkVisit2[j]) {
 						numFishing[j] = false;
@@ -151,14 +156,16 @@ public class Main {
 				}
 				result -= rV;
 
-			}else if(i==2) {
+			}else if(i==2 && !visitExit[2]) {
 				int lV = left(CExit[0], CExit[1], 0, 0);
 				boolean[] checkVisit2 = checkVisit.clone();
 				for (int j = 0; j < checkVisit2.length; j++) {
 					checkVisit[j] = false;
 				}
 				result += lV;
+				visitExit[2] = true;
 				dfs(result, num+1);
+				visitExit[2] = false;
 				for (int j = 0; j < checkVisit2.length; j++) {
 					if (checkVisit2[j]) {
 						numFishing[j] = false;
@@ -176,7 +183,9 @@ public class Main {
 					checkVisit[j] = false;
 				}
 				result += rV;
+				visitExit[2] = true;
 				dfs(result, num+1);
+				visitExit[2] = false;
 				for (int j = 0; j < checkVisit2.length; j++) {
 					if (checkVisit2[j]) {
 						numFishing[j] = false;
