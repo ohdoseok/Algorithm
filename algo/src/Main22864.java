@@ -3,8 +3,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-import sun.applet.Main;
-
 public class Main22864 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -21,6 +19,9 @@ public class Main22864 {
 				max += A;
 			}else {
 				max-=C;
+			}
+			if (max<0) {
+				max = 0;
 			}
 		}
 		System.out.println(count);
