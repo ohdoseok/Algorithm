@@ -14,3 +14,7 @@ Comparator Class 생성, Collections.sort(list,Comparator Class);
 로 정렬
 
 ---
+
+### 마법사 상어와 파이어볼
+
+배열을 넘어가도 그 다음으로 연결 되는 경우 생각 
