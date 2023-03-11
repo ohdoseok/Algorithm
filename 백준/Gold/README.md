@@ -24,3 +24,11 @@ Comparator Class 생성, Collections.sort(list,Comparator Class);
 ### 테크로미노
 
 ㅗ모양의 경우 완전탐색 불가능, cnt가 2일때 현재위치에서 4방탐색, cnt가 3일때 현재 위치를 그대로 넘겨줌 -> ㅗ, ㅏ , ㅓ , ㅜ 모두 가능해짐
+
+
+---
+
+### 드래곤커브
+Right,Up,Left,Down -> 90도 회전하게 되면 idx+1%4로 변경된다.
+x,y 입력값의 경우 배열로 구현하게 되면 반대로 y,x로 된다.
+시작점도 true해줘야 한다.
