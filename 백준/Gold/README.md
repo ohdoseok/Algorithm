@@ -32,3 +32,9 @@ Comparator Class 생성, Collections.sort(list,Comparator Class);
 Right,Up,Left,Down -> 90도 회전하게 되면 idx+1%4로 변경된다.
 x,y 입력값의 경우 배열로 구현하게 되면 반대로 y,x로 된다.
 시작점도 true해줘야 한다.
+
+
+---
+
+### ZOAC
+visit배열로 이전 값을 기억해서 이전 String에서 문자 하나만 추가해서 가장 작은 문자열을 찾는 방법으로 시간 줄였음
