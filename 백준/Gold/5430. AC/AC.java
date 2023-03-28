@@ -17,6 +17,9 @@ public class Main
 			String[] array = ori.substring(1,ori.length()-1).split(",");
 			int frontIdx = 0;
 			int backIdx = array.length-1;
+			if(leng==0) {
+				backIdx = -1;
+			}
 			boolean reverse = false;
 			
 			for(int i = 0 ; i < fuc.length() ; i++) {
@@ -36,13 +39,7 @@ public class Main
 				}
 			}
 			StringBuilder sb = new StringBuilder();
-			if(leng==0) {
-				if(frontIdx!=backIdx) {
-					sb.append("error");
-				}else {
-					sb.append("[]");
-				}
-			}else {
+			{
 				if(frontIdx>backIdx) {
 					if(Math.abs(frontIdx-backIdx)>=2) {
 						sb.append("error");
